@@ -70,11 +70,11 @@ const createAuthor = async function (req, res) {
 const loginAuthor = async (req, res) => {
     try {
         const requestBody=req.body
-        if(!isValididRequestBody){
+        if(!isValididRequestBody(requestBody)){
             res.status(400).send({ status: false, msg: "Please provide Author login Details" }) 
             return 
         }
-        const { email, password } = req.body
+        const { email, password } = requestBody
         if (!isValid(email)) {
             res.status(400).send({ status: false, msg: "email is required" })
             return
@@ -92,7 +92,7 @@ const loginAuthor = async (req, res) => {
         if(!author){
         res.status(401).send({status:false,msg:"Invalid login details"})
         }
-        const token=await jwt.sign({
+        const token= jwt.sign({
             authorId: author._id.toString(),
             organisation:"functionUp",
             batch:"radon"

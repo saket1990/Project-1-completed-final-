@@ -7,7 +7,7 @@ const authorAuth = async function (req, res, next) {
             res.status(403).send({ status: false, msg: "require authentication token in header" })
             return
         }
-        const decodedToken = await jwt.verify(token, "functionup-radon")
+        const decodedToken = jwt.verify(token, "functionup-radon")
         if (!decodedToken) {
             res.status(403).send({ status: false, msg: "Invalid token" })
         }
