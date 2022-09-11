@@ -1,5 +1,4 @@
-const { query } = require('express')
-const { default: mongoose, isValidObjectId } = require('mongoose')
+const mongoose = require('mongoose')
 const AuthorModel = require('../Models/AuthorModel')
 const BlogModel = require('../Models/BlogModel')
 
